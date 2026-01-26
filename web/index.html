@@ -31,7 +31,15 @@
         validate: () => false,
         compile: () => Promise.reject("WASM disabled"),
         instantiate: () => Promise.reject("WASM disabled"),
-        compileStreaming: () => Promise.reject("WASM disabled"), // Added this
+        compileStreaming: () => Promise.reject("WASM disabled"),
+        // Mock constructors
+        RuntimeError: class extends Error {},
+        CompileError: class extends Error {},
+        LinkError: class extends Error {},
+        Module: class {},
+        Instance: class {},
+        Memory: class {},
+        Table: class {},
       };
     }
 
