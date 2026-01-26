@@ -1,31 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <base href="/" />
 
-<head>
-  <base href="/">
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta
+      name="description"
+      content="แอปพลิเคชันออกกำลังกายเพื่อความสุขสำหรับผู้สูงอายุ"
+    />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="แอปพลิเคชันออกกำลังกายเพื่อความสุขสำหรับผู้สูงอายุ">
+    <!-- iOS meta tags & icons -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="ขยับสุข" />
+    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="ขยับสุข">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/app_logo.png" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/app_logo.png" />
+    <title>ขยับสุข</title>
+    <link rel="manifest" href="manifest.json" />
 
-  <title>ขยับสุข</title>
-  <link rel="manifest" href="manifest.json">
+    <!-- DEBUG: Error Logger for Mobile -->
+    <script>
+      window.onerror = function (message, source, lineno, colno, error) {
+        alert("Error: " + message + "\nLine: " + lineno);
+      };
+      window.onunhandledrejection = function (event) {
+        alert("Promise Rejection: " + event.reason);
+      };
+    </script>
 
-  <!-- This script adds the flutter initialization JS inline -->
-  <script src="flutter_bootstrap.js" async></script>
+    <!-- This script adds the flutter initialization JS inline -->
+    <script src="flutter_bootstrap.js" async></script>
+  </head>
 
-</head>
-
-<body>
-</body>
-
+  <body></body>
 </html>
