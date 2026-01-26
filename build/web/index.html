@@ -38,9 +38,11 @@
     // 2. Error Logger
     window.onerror = function(message, source, lineno, colno, error) {
       // Don't alert on harmless warnings or known expected errors if handled
+      if (message.includes("WASM disabled")) return;
       alert("Error: " + message + "\nLine: " + lineno);
     };
     window.onunhandledrejection = function(event) {
+      if (event.reason === "WASM disabled" || (event.reason && event.reason.toString().includes("WASM disabled"))) return;
       alert("Promise Rejection: " + event.reason);
     };
   </script>
