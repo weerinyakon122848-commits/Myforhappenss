@@ -22,15 +22,27 @@
     <title>ขยับสุข</title>
     <link rel="manifest" href="manifest.json" />
 
-    <!-- DEBUG: Error Logger for Mobile -->
-    <script>
-      window.onerror = function (message, source, lineno, colno, error) {
-        alert("Error: " + message + "\nLine: " + lineno);
+    <!-- DEBUG: Error Logger for Mobile & Polyfills -->
+  <script>
+    // 1. WebAssembly Polyfill for iOS Lockdown Mode
+    if (typeof WebAssembly === "undefined") {
+      console.warn("WebAssembly is missing (Lockdown Mode?). Polyfilling to avoid crash.");
+      window.WebAssembly = {
+        validate: () => false,
+        compile: () => Promise.reject("WASM disabled"),
+        instantiate: () => Promise.reject("WASM disabled"),
       };
-      window.onunhandledrejection = function (event) {
-        alert("Promise Rejection: " + event.reason);
-      };
-    </script>
+    }
+
+    // 2. Error Logger
+    window.onerror = function(message, source, lineno, colno, error) {
+      // Don't alert on harmless warnings or known expected errors if handled
+      alert("Error: " + message + "\nLine: " + lineno);
+    };
+    window.onunhandledrejection = function(event) {
+      alert("Promise Rejection: " + event.reason);
+    };
+  </script>
 
     <!-- This script adds the flutter initialization JS inline -->
     <script src="flutter_bootstrap.js" async></script>
