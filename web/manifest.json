@@ -1,0 +1,35 @@
+{
+    "name": "ขยับสุข (Move for Happiness)",
+    "short_name": "ขยับสุข",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FFD1DC",
+    "theme_color": "#FF4081",
+    "description": "แอปพลิเคชันออกกำลังกายเพื่อความสุขสำหรับผู้สูงอายุ",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "assets/images/app_icon_v3.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/app_logo_final.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/app_logo_final.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "assets/images/app_logo_final.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

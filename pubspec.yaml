@@ -1,0 +1,45 @@
+name: khayapsuk
+description: "A new Flutter project."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # ไอคอนมาตรฐานของ iOS
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.1.0
+  # ตัวเล่นวิดีโอ YouTube (เพิ่มให้แล้วครับ)
+  youtube_player_flutter: ^9.0.1
+  url_launcher: ^6.3.1
+  # State Management
+  provider: ^6.1.1
+  # Local Storage
+  shared_preferences: ^2.2.2
+
+  # Firebase
+  firebase_core: ^3.4.0
+  cloud_firestore: ^5.4.0
+  image_picker: ^1.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/launcher_icon.png"
+
+flutter:
+  uses-material-design: true
+
+  # ถ้าคุณมีรูปภาพ ให้ลบเครื่องหมาย # ด้านล่างออกแล้วใส่ชื่อโฟลเดอร์ครับ
+  assets:
+    - assets/images/

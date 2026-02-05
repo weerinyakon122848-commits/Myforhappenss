@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573809859438",
+    "project_id": "mh-app-35694",
+    "storage_bucket": "mh-app-35694.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573809859438:android:5db6ec4e1e60c166d97f7f",
+        "android_client_info": {
+          "package_name": "com.example.khayapsuk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDabgmFcdKlxbvENo3PLGBah6BCYTdBGY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+  <base href="$FLUTTER_BASE_HREF" />
+
+  <meta charset="UTF-8" />
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+  <meta name="description" content="แอปพลิเคชันออกกำลังกายเพื่อความสุขสำหรับผู้สูงอายุ" />
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="ขยับสุข" />
+  <link rel="apple-touch-icon" href="icons/Icon-192.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/app_icon_v3.png" />
+
+  <title>ขยับสุข</title>
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- DEBUG: Error Logger for Mobile & Polyfills -->
+  <script>
+    // 1. WebAssembly Polyfill for iOS Lockdown Mode
+    if (typeof WebAssembly === "undefined") {
+      console.warn("WebAssembly is missing (Lockdown Mode?). Polyfilling to avoid crash.");
+      window.WebAssembly = {
+        validate: () => false,
+        compile: () => Promise.reject("WASM disabled"),
+        instantiate: () => Promise.reject("WASM disabled"),
+        compileStreaming: () => Promise.reject("WASM disabled"),
+        // Mock constructors
+        RuntimeError: class extends Error { },
+        CompileError: class extends Error { },
+        LinkError: class extends Error { },
+        Module: class { },
+        Instance: class { },
+        Memory: class { },
+        Table: class { },
+      };
+    }
+
+    // 2. Error Logger
+    window.onerror = function (message, source, lineno, colno, error) {
+      // Don't alert on harmless warnings or known expected errors if handled
+      if (message.includes("WASM disabled")) return;
+      alert("Error: " + message + "\nLine: " + lineno);
+    };
+    window.onunhandledrejection = function (event) {
+      if (event.reason === "WASM disabled" || (event.reason && event.reason.toString().includes("WASM disabled"))) return;
+      alert("Promise Rejection: " + event.reason);
+    };
+  </script>
+
+  <!-- Dynamic PWA Icon Override -->
+  <script>
+    // Force PWA icons to use new logo by dynamically creating manifest
+    const manifestOverride = {
+      "name": "ขยับสุข (Move for Happiness)",
+      "short_name": "ขยับสุข",
+      "start_url": ".",
+      "display": "standalone",
+      "background_color": "#FFD1DC",
+      "theme_color": "#FF4081",
+      "description": "แอปพลิเคชันออกกำลังกายเพื่อความสุขสำหรับผู้สูงอายุ",
+      "orientation": "portrait-primary",
+      "prefer_related_applications": false,
+      "icons": [
+        {
+          "src": "assets/images/app_icon_v3.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "src": "assets/images/app_icon_v3.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "src": "assets/images/app_icon_v3.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "maskable"
+        },
+        {
+          "src": "assets/images/app_icon_v3.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "maskable"
+        }
+      ]
+    };
+
+    // Create blob URL for manifest
+    const manifestBlob = new Blob([JSON.stringify(manifestOverride)], { type: 'application/json' });
+    const manifestURL = URL.createObjectURL(manifestBlob);
+
+    // Remove old manifest link
+    const oldManifest = document.querySelector('link[rel="manifest"]');
+    if (oldManifest) {
+      oldManifest.remove();
+    }
+
+    // Add new manifest link with blob URL
+    const newManifest = document.createElement('link');
+    newManifest.rel = 'manifest';
+    newManifest.href = manifestURL;
+    document.head.appendChild(newManifest);
+  </script>
+
+  <!-- This script adds the flutter initialization JS inline -->
+  <script src="flutter_bootstrap.js" async></script>
+</head>
+
+<body></body>
+
+</html>
